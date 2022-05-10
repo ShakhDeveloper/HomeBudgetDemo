@@ -1,4 +1,6 @@
-﻿using HomeBudgetDemo.Models;
+﻿using HomeBudgetDemo.Areas.Identity.Pages.Account;
+using HomeBudgetDemo.Models;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,5 +20,8 @@ namespace HomeBudgetDemo.Data
         public DbSet<CostOrIncome> costOrIncomes { get; set; }
         public DbSet<CategoryCost> categoryCosts { get; set; }
         public DbSet<CategoryIncome> categoryIncomes { get; set; }
+        public DbSet<LogUser> logUsers { get; set; }
+        public DbSet<RegUser> regUsers { get; set; }
+        
     }
 }
