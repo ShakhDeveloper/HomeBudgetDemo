@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HomeBudgetDemo.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class tests : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,37 @@ namespace HomeBudgetDemo.Migrations
                 {
                     table.PrimaryKey("PK_CostOrIncome", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "LogUserDb",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogUserDb", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegDB",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstNme = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordConfim = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegDB", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -61,6 +92,12 @@ namespace HomeBudgetDemo.Migrations
 
             migrationBuilder.DropTable(
                 name: "CostOrIncome");
+
+            migrationBuilder.DropTable(
+                name: "LogUserDb");
+
+            migrationBuilder.DropTable(
+                name: "RegDB");
         }
     }
 }

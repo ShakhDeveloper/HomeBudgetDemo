@@ -1,87 +1,104 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿<section style="margin-top:25px;" id="features" class="features">
 
-<section id="works" class="works clearfix">
+
     <div class="container">
         <div class="row">
 
-            <div class="sec-title text-center">
-                <h2 style="text-transform:capitalize;">Доходы</h2>
-                <div class="devider"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
+            <div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
+                <h2 style="text-transform:capitalize;">список доходов</h2>
+                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
             </div>
 
-            <form action="">
-                <div class="forma">
-                    <label>Сумма</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
+            <div class="container">
+                <a asp-controller="home" asp-action="addincome" style="margin-bottom:10px;" class="btn btn-success mb-5">+Добавить новые доходы</a>
+                <table class="table table-dark table-striped">
 
-
-                    <label for="localdate">Дата и время: </label> <br>
-                    <input style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
-
-                    <label>Категории</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Основные категории</option>
-                        <option value="1">Заработная плата</option>
-                        <option value="2">Пенсия</option>
-                        <option value="3">Доход от аренды имущества</option>
-                        <option value="4">Прочие доходы</option>
-
-                    </select>
-                    <button type="button" class="btn btn-primary">Сохранить</button>
-                    <button type="reset" class="btn btn-light">Отменить</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
+                    <thead>
+                        <tr class="table-bordered">
+                            <th scope="col">Id</th>
+                            <th scope="col">Приход/Расход</th>
+                            <th scope="col">Категории</th>
+                            <th scope="col">Сумма</th>
+                            <th scope="col">Комментарии</th>
+                            <th scope="col">Дата добавления</th>
+                            <th scope="col">Дейсвие</th>
 
 
 
-<section id="team" class="team">
-    <div class="container">
-        <div class="row">
 
-            <div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
-                <h2 style="text-transform:capitalize;">Расходы</h2>
-                <div class="devider"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="success">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                            <td>Otto</td>
+
+                            <td scope="col"> <button type="submit" class="btn btn-success"> @{} Редактировать</button></td>
+                            <td scope="col"> <button type="submit" onclick="return confirm('Are you sure delete this?');" class="btn btn-danger">Удалить</button></td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>twitter</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>twitter</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
-
-            <form action="">
-                <div class="forma">
-                    <label>Сумма</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
-
-
-                    <label for="localdate">Дата и время: </label> <br>
-                    <input style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
-
-                    <label>Категории</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Основные категории</option>
-                        <option value="1">Продукты питания</option>
-                        <option value="2">Домашнее хозяйство</option>
-                        <option value="3">Досуг и отдых</option>
-                        <option value="4">Коммунальные платежи</option>
-                        <option value="5">Медицина</option>
-                        <option value="6">Одежда, обувь, аксессуары</option>
-                        <option value="7">Проезд, транспорт</option>
-                        <option value="8">Связь, ТВ и интернет</option>
-                        <option value="9">Уход за собой</option>
-                        <option value="10">Автомобиль</option>
-                    </select>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-primary">Сохранить</button>
-                    <button type="reset" class="btn btn-light">Отменить</button>
-                </div>
-            </form>
-
-
         </div>
     </div>
+
 </section>

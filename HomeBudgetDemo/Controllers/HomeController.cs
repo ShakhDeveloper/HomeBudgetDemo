@@ -19,8 +19,21 @@ namespace HomeBudgetDemo.Controllers
            
             return View();
         }
+        public IActionResult ViewIncome()
+        {
+            return View();
+        }
 
-        public IActionResult Forma()
+        public IActionResult ViewCosts()
+        {
+            return View();
+        }
+
+        public IActionResult AddCost()
+        {
+            return View();
+        }
+        public IActionResult AddIncome()
         {
             return View();
         }

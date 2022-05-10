@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeBudgetDemo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220510024530_Test3")]
-    partial class Test3
+    [Migration("20220510142747_tests")]
+    partial class tests
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,7 +80,7 @@ namespace HomeBudgetDemo.Migrations
                     b.ToTable("CategoryIncome");
                 });
 
-            modelBuilder.Entity("HomeBudgetDemo.ViewModels.Users.Registr", b =>
+            modelBuilder.Entity("HomeBudgetDemo.ViewModels.RegViewModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +90,7 @@ namespace HomeBudgetDemo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FirstNme")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -102,28 +102,39 @@ namespace HomeBudgetDemo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordConfim")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.ToTable("RegistrDB");
+                    b.ToTable("RegDB");
                 });
 
-            modelBuilder.Entity("HomeBudgetDemo.ViewModels.Users.User", b =>
+            modelBuilder.Entity("HomeBudgetDemo.ViewModels.ViewUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserDB");
+                    b.ToTable("LogUserDb");
                 });
 #pragma warning restore 612, 618
         }
