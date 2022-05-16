@@ -1,4 +1,12 @@
-﻿
+﻿@using HomeBudgetDemo
+@using HomeBudgetDemo.Models;
+@using HomeBudgetDemo.Data
+@{
+    Layout = "_Layout";
+
+}
+@model CostOrIncome
+
 <section style="margin-top:25px;" id="works" class="works clearfix">
     <div class="container">
         <div class="row">
@@ -8,17 +16,17 @@
                 <div class="devider"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
             </div>
 
-            <form action="">
+            <form asp-controller="home" asp-action="addincome" method="post">
                 <div class="forma">
-                    <label>Сумма</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
+                    <label asp-for="Sum">Сумма</label>
+                    <input asp-for="Sum" class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
 
 
-                    <label for="localdate">Дата и время: </label> <br>
-                    <input style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
+                    <label asp-for="Date" for="localdate">Дата и время: </label> <br>
+                    <input asp-for="Date" style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
 
-                    <label>Категории</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <label asp-for="CategoryId">Категории</label>
+                    <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
                         <option selected>Основные категории</option>
                         <option value="1">Заработная плата</option>
                         <option value="2">Пенсия</option>
@@ -27,11 +35,11 @@
 
                     </select>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label asp-for="Comment" for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
+                        <textarea asp-for="Comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary">Сохранить</button>
-                    <button type="reset" class="btn btn-light">Отменить</button>
+                    <button type="submit" asp-controller="home" asp-action="addincome" class="btn btn-primary">Сохранить</button>
+                    <button type="reset" asp-controller="home" asp-action="viewincome" class="btn btn-light">Отменить</button>
                 </div>
             </form>
         </div>

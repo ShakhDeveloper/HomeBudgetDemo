@@ -1,4 +1,8 @@
-﻿<section  style="margin-top:25px;"  id="team" class="team">
+﻿@using HomeBudgetDemo
+@using HomeBudgetDemo.Models;
+@using HomeBudgetDemo.Data
+@model CostOrIncome
+<section style="margin-top:25px;" id="team" class="team">
     <div class="container">
         <div class="row">
 
@@ -7,17 +11,17 @@
                 <div class="devider"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
             </div>
 
-            <form action="">
+            <form asp-controller="home" asp-action="AddCost">
                 <div class="forma">
                     <label>Сумма</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
+                    <input asp-for="Sum" class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
 
 
                     <label for="localdate">Дата и время: </label> <br>
-                    <input style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
+                    <input style="font-size: 15px;" type="datetime" id="localdate" name="date" /> <br>
 
                     <label>Категории</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
                         <option selected>Основные категории</option>
                         <option value="1">Продукты питания</option>
                         <option value="2">Домашнее хозяйство</option>
@@ -33,10 +37,10 @@
 
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea asp-for="Comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary">Сохранить</button>
-                    <button type="reset" class="btn btn-light">Отменить</button>
+                    <button asp-controller="home" asp-action="addcost" type="submit" class="btn btn-primary"> Сохранить</button>
+                    <button asp-controller="home" asp-action="viewcosts" type="reset" class="btn btn-light">Отменить</button>
                 </div>
             </form>
 

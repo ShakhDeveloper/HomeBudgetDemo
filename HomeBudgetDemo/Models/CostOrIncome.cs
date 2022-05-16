@@ -15,16 +15,16 @@ namespace HomeBudgetDemo.Data
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public CostOrIncomeType type { get; set; }
+        public  CostOrIncomeType type { get; set; }
         [Required]
         public double Sum { get; set; }
         public string Comment { get; set; }
         [Required]
         public int CategoryId { get; set; }
     }
-    public enum CostOrIncomeType
+    public  enum CostOrIncomeType
     {
-        Income,
-        Cost
+        Доход,
+        Расход
     }
 }
