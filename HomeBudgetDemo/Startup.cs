@@ -29,14 +29,18 @@ namespace HomeBudgetDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICostOrIncomeInterface, CostOrIncomeRepository>();
-            services.AddTransient<ICategoryIncomeInterface, CategoryIncomeRepository>();
-            //services.AddScoped<ICategoryCostInterface, CategoryCostRepository>();
+            services.AddScoped<ICostOrIncomeInterface, CostOrIncomeRepository>();
+            services.AddScoped<ICategoryIncomeInterface, CategoryIncomeRepository>();
+            services.AddScoped<ICategoryCostInterface, CategoryCostRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("LocalSqlDB")));
 
-         
+
+
+            services.AddControllers();
+            services.AddCors();
+
 
             services.AddControllersWithViews();
         }
@@ -64,6 +68,7 @@ namespace HomeBudgetDemo
 
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

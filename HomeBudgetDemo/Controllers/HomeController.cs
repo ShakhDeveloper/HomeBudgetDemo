@@ -28,7 +28,7 @@ namespace HomeBudgetDemo.Controllers
         }
         public IActionResult Index()
         {
-           
+
             return View();
         }
         [HttpGet]
@@ -36,7 +36,7 @@ namespace HomeBudgetDemo.Controllers
         {
             var list = await costOrIncome.GetCostOrIncomes();
             List<ViewIncomeViewModel> listOfViewModels = new List<ViewIncomeViewModel>();
-            foreach(var v in list.Where(c => c.type == CostOrIncomeType.Доход).ToList())
+            foreach (var v in list.Where(c => c.type == CostOrIncomeType.Доход).ToList())
             {
                 var category = await incomeInterface.GetCategoryIncome(v.CategoryId);
                 ViewIncomeViewModel viewModel = new ViewIncomeViewModel()
@@ -52,25 +52,26 @@ namespace HomeBudgetDemo.Controllers
             };
             return View(listOfViewModels);
         }
+
         [HttpGet]
         public async Task<IActionResult> ViewCosts()
         {
             var list = await costOrIncome.GetCostOrIncomes();
-            List<ViewCostModel> listOfViewModels = new List<ViewCostModel>();
-            //foreach (var v in list.Where(c => c.type == CostOrIncomeType.Расход).ToList())
-            //{
-            //    var category = await _costInterface.GetCategoryCost(v.CategoryId);
-            //    ViewCostModel viewModel = new ViewCostModel()
-            //    {
-            //        Id = v.Id,
-            //        Date = v.Date,
-            //        type = v.type,
-            //        Sum = v.Sum,
-            //        Comment = v.Comment,
-            //        CategoryName = category.Name
-            //    };
-            //    listOfViewModels.Add(viewModel);
-            //};
+            List<ViewIncomeViewModel> listOfViewModels = new List<ViewIncomeViewModel>();
+            foreach (var v in list.Where(c => c.type == CostOrIncomeType.Расход).ToList())
+            {
+                var category = await _costInterface.GetCategoryCost(v.CategoryId);
+                ViewIncomeViewModel viewModel = new ViewIncomeViewModel()
+                {
+                    Id = v.Id,
+                    Date = v.Date,
+                    type = v.type,
+                    Sum = v.Sum,
+                    Comment = v.Comment,
+                    CategoryName = category.Name
+                };
+                listOfViewModels.Add(viewModel);
+            };
             return View(listOfViewModels);
         }
        
@@ -80,7 +81,7 @@ namespace HomeBudgetDemo.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddCosts(CostOrIncome CostOrIncome)
+        public async Task<IActionResult> AddCost(CostOrIncome CostOrIncome)
         {
             await costOrIncome.AddCostOrIncome(CostOrIncome);
                 return RedirectToAction("ViewCosts");
@@ -95,7 +96,7 @@ namespace HomeBudgetDemo.Controllers
         {
             await costOrIncome.AddCostOrIncome(CostOrIncome);
 
-            
+
             return RedirectToAction("ViewIncome");
         }
 

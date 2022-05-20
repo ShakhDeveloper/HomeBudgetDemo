@@ -13,11 +13,7 @@ namespace HomeBudgetDemo.Services.Repositories
     public class CategoryCostRepository : ICategoryCostInterface
     {
         private readonly AppDbContext _dbContext;
-        private readonly IWebHostEnvironment _webHostEnvironment1;
-        public CategoryCostRepository(IWebHostEnvironment webHostEnvironment)
-        {
-            _webHostEnvironment1 = webHostEnvironment;
-        }
+     
         public CategoryCostRepository(AppDbContext dbContext)
 
         {

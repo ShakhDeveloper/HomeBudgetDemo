@@ -1,6 +1,9 @@
 ﻿@using HomeBudgetDemo
 @using HomeBudgetDemo.Models;
 @using HomeBudgetDemo.Data
+@{ 
+    Layout = "_Layout";
+}
 @model CostOrIncome
 <section style="margin-top:25px;" id="team" class="team">
     <div class="container">
@@ -11,16 +14,16 @@
                 <div class="devider"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
             </div>
 
-            <form asp-controller="home" asp-action="AddCost">
+            <form asp-controller="home" asp-action="AddCost" method="post">
                 <div class="forma">
-                    <label>Сумма</label>
+                    <label asp-for="Sum">Сумма</label>
                     <input asp-for="Sum" class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
 
 
-                    <label for="localdate">Дата и время: </label> <br>
-                    <input style="font-size: 15px;" type="datetime" id="localdate" name="date" /> <br>
+                    <label asp-for="Date" for="localdate">Дата и время: </label> <br>
+                    <input asp-for="Date" style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
 
-                    <label>Категории</label>
+                    <label asp-for="CategoryId">Категории</label>
                     <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
                         <option selected>Основные категории</option>
                         <option value="1">Продукты питания</option>
@@ -36,7 +39,7 @@
                     </select>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
+                        <label asp-for="Comment" for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
                         <textarea asp-for="Comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <button asp-controller="home" asp-action="addcost" type="submit" class="btn btn-primary"> Сохранить</button>
