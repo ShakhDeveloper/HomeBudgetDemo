@@ -115,6 +115,8 @@ namespace HomeBudgetDemo.Controllers
             return RedirectToAction("ViewCosts");
         }
 
+
+        //for cost
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -124,10 +126,10 @@ namespace HomeBudgetDemo.Controllers
 
         }
 
+        //for cost
         [HttpPost]
         public async Task<IActionResult> Edit(ViewCostModel viewModel)
         {
-
             CostOrIncome costOr = new CostOrIncome()
             {
                 Id = viewModel.Id,
@@ -135,14 +137,40 @@ namespace HomeBudgetDemo.Controllers
                 type = viewModel.type,
                 Sum = viewModel.Sum,
                 Comment = viewModel.Comment,
-                CategoryId = viewModel.CostCateg.Id
-
+                CategoryId = viewModel.CategoryId
             };
 
             costOr = await costOrIncome.UpdateCostOrIncome(costOr);
-
-          
             return RedirectToAction("ViewCosts");
+        }
+
+
+        //for income
+        [HttpGet]
+        public async Task<IActionResult> EditIncome(int id)
+        {
+            var list = await costOrIncome.GetCostOrIncome(id);
+
+            return View((ViewCostModel)list);
+
+        }
+
+        //for income
+        [HttpPost]
+        public async Task<IActionResult> EditIncome(ViewCostModel viewModel)
+        {
+            CostOrIncome costOr = new CostOrIncome()
+            {
+                Id = viewModel.Id,
+                Date = viewModel.Date,
+                type = CostOrIncomeType.Доход,
+                Sum = viewModel.Sum,
+                Comment = viewModel.Comment,
+                CategoryId = viewModel.CategoryId
+            };
+
+            costOr = await costOrIncome.UpdateCostOrIncome(costOr);
+            return RedirectToAction("ViewIncome");
         }
     }
 }

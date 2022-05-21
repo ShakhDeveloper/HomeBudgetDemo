@@ -15,7 +15,6 @@ namespace HomeBudgetDemo.ViewModels
         public double Sum { get; set; }
         public string Comment { get; set; }
         public int CategoryId { get; set; }
-        public CategoryCost CostCateg { get; set; }
 
         public static explicit operator ViewCostModel(CostOrIncome v)
         {

@@ -48,7 +48,7 @@
                             }
                             <td>@incom.Comment</td>
                             <td>@incom.Date</td>
-                            <td scope="col"> <a asp-controller="home" asp-action="edit" asp-route-id="@incom.Id" class="btn btn-success"> Редактировать</a></td>
+                            <td scope="col"> <a asp-controller="home" asp-action="editincome" asp-route-id="@incom.Id" class="btn btn-success"> Редактировать</a></td>
                             <td scope="col"> <a asp-controller="home" asp-action="deleteIn" asp-route-id="@incom.Id" onclick="return confirm('Are you sure delete this?');" class="btn btn-danger">Удалить</a></td>
 
                         </tr>
