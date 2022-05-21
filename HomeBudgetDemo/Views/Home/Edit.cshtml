@@ -1,0 +1,53 @@
+﻿@using HomeBudgetDemo
+@using HomeBudgetDemo.ViewModels
+@using HomeBudgetDemo.Data
+@{
+    Layout = "_Layout";
+}
+@model ViewCostModel
+<section style="margin-top:25px;" id="team" class="team">
+    <div class="container">
+        <div class="row">
+
+            <div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
+                <h2 style="text-transform:capitalize;">Добавить Расходов</h2>
+                <div class="devider"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+            </div>
+
+            <form asp-controller="home" asp-action="AddCost" method="post">
+                <div class="forma">
+                    <label asp-for="Sum">Сумма</label>
+                    <input asp-for="Sum" class="form-control form-control-lg" type="text" placeholder="Укажите сумму" aria-label=".form-control-lg example">
+
+
+                    <label asp-for="Date" for="localdate">Дата и время: </label> <br>
+                    <input asp-for="Date" style="font-size: 15px;" type="datetime-local" id="localdate" name="date" /> <br>
+
+                    <label asp-for="CategoryId">Категории</label>
+                    <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
+                        <option selected>Основные категории</option>
+                        <option value="1">Продукты питания</option>
+                        <option value="2">Домашнее хозяйство</option>
+                        <option value="3">Досуг и отдых</option>
+                        <option value="4">Коммунальные платежи</option>
+                        <option value="5">Медицина</option>
+                        <option value="6">Одежда, обувь, аксессуары</option>
+                        <option value="7">Проезд, транспорт</option>
+                        <option value="8">Связь, ТВ и интернет</option>
+                        <option value="9">Уход за собой</option>
+                        <option value="10">Автомобиль</option>
+                    </select>
+
+                    <div class="mb-3">
+                        <label asp-for="Comment" for="exampleFormControlTextarea1" class="form-label">Комментарии</label>
+                        <textarea asp-for="Comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button asp-controller="home" asp-action="edit" type="submit" class="btn btn-primary"> Сохранить</button>
+                    <button asp-controller="home" asp-action="viewcosts" type="reset" class="btn btn-light">Отменить</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</section>

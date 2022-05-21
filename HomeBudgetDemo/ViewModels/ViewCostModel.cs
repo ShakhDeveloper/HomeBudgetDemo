@@ -1,4 +1,5 @@
 ﻿using HomeBudgetDemo.Data;
+using HomeBudgetDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,20 @@ namespace HomeBudgetDemo.ViewModels
         public CostOrIncomeType type { get; set; }
         public double Sum { get; set; }
         public string Comment { get; set; }
-        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        public CategoryCost CostCateg { get; set; }
+
+        public static explicit operator ViewCostModel(CostOrIncome v)
+        {
+            return new ViewCostModel
+            {
+                Id = v.Id,
+                Date = v.Date,
+                type = v.type,
+                Sum = v.Sum,
+                Comment = v.Comment,
+                CategoryId = v.CategoryId
+            };
+        }
     }
 }

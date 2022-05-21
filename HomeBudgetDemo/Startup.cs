@@ -1,8 +1,11 @@
 using HomeBudgetDemo.Data;
 using HomeBudgetDemo.Services.Interfaces;
 using HomeBudgetDemo.Services.Repositories;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Documents;
@@ -65,7 +68,7 @@ namespace HomeBudgetDemo
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+         
             app.UseEndpoints(endpoints =>
             {
                 

@@ -81,10 +81,11 @@ namespace HomeBudgetDemo.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddCost(CostOrIncome CostOrIncome)
+        public async Task<IActionResult> AddCost(CostOrIncome cost)
         {
-            await costOrIncome.AddCostOrIncome(CostOrIncome);
-                return RedirectToAction("ViewCosts");
+            cost.type = CostOrIncomeType.Расход;
+            await costOrIncome.AddCostOrIncome(cost);
+            return RedirectToAction("ViewCosts");
         }
         [HttpGet]
         public IActionResult AddIncome()
@@ -92,9 +93,10 @@ namespace HomeBudgetDemo.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddIncome(CostOrIncome CostOrIncome)
+        public async Task<IActionResult> AddIncome(CostOrIncome income)
         {
-            await costOrIncome.AddCostOrIncome(CostOrIncome);
+            income.type = CostOrIncomeType.Доход;
+            await costOrIncome.AddCostOrIncome(income);
 
 
             return RedirectToAction("ViewIncome");
@@ -112,5 +114,36 @@ namespace HomeBudgetDemo.Controllers
 
             return RedirectToAction("ViewCosts");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var list = await costOrIncome.GetCostOrIncome(id);
+
+            return View((ViewCostModel)list);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ViewCostModel viewModel)
+        {
+
+            CostOrIncome costOr = new CostOrIncome()
+            {
+                Id = viewModel.Id,
+                Date = viewModel.Date,
+                type = viewModel.type,
+                Sum = viewModel.Sum,
+                Comment = viewModel.Comment,
+                CategoryId = viewModel.CostCateg.Id
+
+            };
+
+            costOr = await costOrIncome.UpdateCostOrIncome(costOr);
+
+          
+            return RedirectToAction("ViewCosts");
+        }
     }
 }
+
