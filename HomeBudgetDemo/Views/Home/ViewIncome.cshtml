@@ -35,33 +35,29 @@
                     <tbody>
                         @{
                             double sum = 0;
-                            }
+                        }
                         @foreach (var incom in Model)
                         {
-                        <tr class="success">
-                            <td>@incom.Id</td>
-                            <td>@incom.type</td>
-                            <td>@incom.CategoryName</td>
-                            <td>@incom.Sum</td>
-                            @{ 
-                                sum += incom.Sum;
-                            }
-                            <td>@incom.Comment</td>
-                            <td>@incom.Date</td>
-                            <td scope="col"> <a asp-controller="home" asp-action="editincome" asp-route-id="@incom.Id" class="btn btn-success"> Редактировать</a></td>
-                            <td scope="col"> <a asp-controller="home" asp-action="deleteIn" asp-route-id="@incom.Id" onclick="return confirm('Are you sure delete this?');" class="btn btn-danger">Удалить</a></td>
+                            <tr class="success">
+                                <td>@incom.Id</td>
+                                <td>@incom.type</td>
+                                <td>@incom.CategoryName</td>
+                                <td>@incom.Sum</td>
+                                @{
+                                    sum += incom.Sum;
+                                }
+                                <td>@incom.Comment</td>
+                                <td>@incom.Date</td>
+                                <td scope="col"> <a asp-controller="home" asp-action="editincome" asp-route-id="@incom.Id" class="btn btn-success"> Редактировать</a></td>
+                                <td scope="col"> <a asp-controller="home" asp-action="deleteIn" asp-route-id="@incom.Id" onclick="return confirm('Are you sure delete this?');" class="btn btn-danger">Удалить</a></td>
 
-                        </tr>
+                            </tr>
                         }
-
-                        <tr>
-                            <td colspan="3">Total: </td>
-                            
-                            <td colspan="3">@sum</td>
-                        </tr>
-                        </tbody>
+                    </tbody>
                 </table>
-
+                <div class="sec-title text-center mb50 wow bounceInDown animated" style="margin-top:15px;">
+                    <h2 style="text-transform:capitalize">Итоговая сумма Доходов:  @sum</h2>
+                </div>
 
             </div>
         </div>
