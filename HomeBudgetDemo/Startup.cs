@@ -37,7 +37,8 @@ namespace HomeBudgetDemo
             services.AddScoped<ICategoryCostInterface, CategoryCostRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("LocalSqlDB")));
+            options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
+            
 
 
 
